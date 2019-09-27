@@ -1,4 +1,5 @@
-const sql = require("mssql");
+const sql = require('mssql')
+
 let connectionData = {
     user: 'sa',
     password: 'SQLExpress',
@@ -11,7 +12,6 @@ let connectionData = {
     }
 }
 
-
 function createTable(conn) {
 
     const table = new sql.Table('clients');
@@ -20,15 +20,19 @@ function createTable(conn) {
     table.columns.add('name', sql.NVarChar(150), { nullable: false });
     table.columns.add('email', sql.NVarChar(50), { nullable: false });
     table.columns.add('role', sql.NVarChar(10), { nullable: false });
-    table.rows.add('a0ece5db-cd14-4f21-812f-966633e7be86', 'Britney', 'britneyblankenship@quotezart.com','admin2');
-
-    const request = new sql.Request()    
+    
+    for (let index = 0; index < getClients.length; index++) {
+        console.log(getClients)
+        table.rows.add(index, 'Britney', 'britneyblankenship@quotezart.com', 'admin2')    
+    }
+    
+    const request = new sql.Request()
     request.bulk(table)
-        .then(result => {console.log(result), sql.close()})
-        .catch(err => {console.log('error in bulk. ' + err), sql.close()})    
+        .then(result => { console.log(result), sql.close() })
+        .catch(err => { console.log(`Erro : ${err}`), sql.close() })
 }
 
 sql.connect(connectionData)
-   .then(conn => createTable(conn))
-   .catch(err => console.log("erro! " + err));
+    .then(conn => createTable(conn))
+    .catch(err => console.log(`Erro : ${err}`));
 
