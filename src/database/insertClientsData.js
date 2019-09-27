@@ -1,4 +1,5 @@
 const sql = require('mssql')
+const clientsUrl = "http://www.mocky.io/v2/5808862710000087232b75ac"
 
 let connectionData = {
     user: 'sa',
@@ -11,9 +12,8 @@ let connectionData = {
         instanceName: 'SQLEXPRESS'
     }
 }
-
-function createTable(conn) {
-
+function createTableClients(data) {
+   
     const table = new sql.Table('clients');
     table.create = true;
     table.columns.add('id', sql.NVarChar(36), { nullable: false, primary: true });
@@ -21,18 +21,21 @@ function createTable(conn) {
     table.columns.add('email', sql.NVarChar(50), { nullable: false });
     table.columns.add('role', sql.NVarChar(10), { nullable: false });
     
-    for (let index = 0; index < getClients.length; index++) {
-        console.log(getClients)
-        table.rows.add(index, 'Britney', 'britneyblankenship@quotezart.com', 'admin2')    
+    for (let index = 0; index < data.length; index++) {       
+        table.rows.add(data[index].id, data[index].name, data[index].email, data[index].role)    
     }
     
     const request = new sql.Request()
-    request.bulk(table)
-        .then(result => { console.log(result), sql.close() })
-        .catch(err => { console.log(`Erro : ${err}`), sql.close() })
+    request.bulk(table)    
+         .then(result => { console.log(result), sql.close() })
+         .catch(err => { console.log(`Erro : ${err}`), sql.close() })
 }
 
-sql.connect(connectionData)
-    .then(conn => createTable(conn))
-    .catch(err => console.log(`Erro : ${err}`));
+function insertClientsData(data) {
+    sql.connect(connectionData)
+        .then(conn => createTableClients(data))
+        .catch(err => console.log(`Erro : ${err}`));
+}
+
+module.exports = insertClientsData
 
