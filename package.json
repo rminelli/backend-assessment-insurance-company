@@ -5,7 +5,8 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "nodemon",
-    "test": "nps test"
+    "test": "nps test",
+    "build": "node ./src/database/initialSetup.js"
   },
   "author": "Roberto de Figueiredo Minelli",
   "license": "MIT",
