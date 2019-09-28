@@ -1,5 +1,4 @@
 const getData = require('./getData')
-const sql = require('mssql')
 const insertPoliciesData = require('./insertPoliciesData')
 
 const policiesUrl = "http://www.mocky.io/v2/580891a4100000e8242b75c5"
