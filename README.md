@@ -11,3 +11,5 @@ Back to the right tab click on SQL Server Network Configuration
 then Client Protocols
 change TCP/IP to enable
 Let me know if it works.
+
+for simulation purposes the token expiration time has been set to 300 seconds (5minutes)

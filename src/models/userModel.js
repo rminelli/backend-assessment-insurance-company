@@ -18,10 +18,10 @@ exports.userModel = function (req, res) {
 
     sql.connect(connectionData).then(function (pool) {
         console.log("==== DATABASE CONNECTED =====");
-        let query = `select id from clients where name = '${_userName}' and email = '${_userEmail}'`
+        let query = `select id, role from clients where name = '${_userName}' and email = '${_userEmail}'`
         return pool.request().query(query).then(function (result) {
             console.log("*** Data successfully returned *** ");
-            let _returnSql = result.recordset.length === 0 ? false : result.recordset[0].id
+            let _returnSql = result.recordset.length === 0 ? false : result.recordset[0]
             if (!_returnSql) {
                 console.log("User does not exist")
                 sql.close();

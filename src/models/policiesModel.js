@@ -1,6 +1,6 @@
 const auth = require('../middleware/authentication.js')
 
-exports.getClient = function (req, res) {
+exports.getPolicies = function (req, res) {
     const sql = require('mssql')
     let connectionData = {
         user: 'sa',
@@ -14,32 +14,49 @@ exports.getClient = function (req, res) {
         }
     }
     let _token = req.headers.token
-    let _clientId = req.headers.id
     let _clientName = req.headers.name
+    let _clientPolicieId = req.headers.policieid
 
     let resp = auth.checkToken(_token)
     let query = ''
 
-    if (_clientId) {
-        query = `select * from clients where id = '${_clientId}'`
-    } else if (_clientName) {
-        query = `select * from clients where name = '${_clientName}'`
+    if (_clientName) {
+        query = `select a.name as clientName,                          
+                        b.id as policieId, 
+                        b.amountInsured, 
+                        b.email as policeEmail, 
+                        b.inceptionDate, 
+                        b.installmentPayment, 
+                        b.clientId as policieClientId
+                    from 
+                        clients as a 
+                    join policies as b on a.id = b.clientId 
+                    where a.name = '${_clientName}'`
+    } else if (_clientPolicieId) {
+        query = `select a.id as clientID, 
+                        a.email as clientEmail, 
+                        a.name as clientName, 
+                        a.role as clientRole, 
+                        b.id as policieId                       
+                    from 
+                        clients as a 
+                    join policies as b on a.id = b.clientId 
+                    where b.id = '${_clientPolicieId}'`
     } else {
-        return res.status(404).send({ msg: 'client id or name not provided' });
+        return res.status(404).send({ msg: 'customer name or policie id not provided' });
     }
-    if (resp.status) {
+    if (resp.decoded.data.role === 'admin') {
         sql.connect(connectionData).then(function (pool) {
-
             console.log("==== DATABASE CONNECTED =====");
             return pool.request().query(query).then(function (result) {
                 console.log("*** Data successfully returned *** ");
-                let _returnSql = result.recordset.length === 0 ? false : result.recordset[0]
+                let _returnSql = result.recordset.length === 0 ? false : result.recordset
                 if (!_returnSql) {
                     console.log("Client does not exist")
                     sql.close();
                     res.status(500).send('User does not exist!')
                 } else {
-                    console.log("User exist!", _returnSql);
+                    console.log('Successful data query');
                     sql.close()
                     res.status(200).send({ msg: true, data: _returnSql })
 
@@ -65,6 +82,6 @@ exports.getClient = function (req, res) {
             )
         })
     } else {
-        res.status(401).send({ msg: resp.msg });
+        res.status(401).send({ msg: 'Unauthorized access to this query', role: resp.decoded.data.role , data : resp.msg });
     }
 }

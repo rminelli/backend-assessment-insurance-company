@@ -14,11 +14,11 @@ let connectionData = {
 }
 function createTableClients(data) {
    
-    const table = new sql.Table('clients');
+    const table = new sql.Table('clients');   
     table.create = true;
     table.columns.add('id', sql.NVarChar(36), { nullable: false, primary: true });
     table.columns.add('name', sql.NVarChar(150), { nullable: false });
-    table.columns.add('email', sql.NVarChar(50), { nullable: false, primary: true });
+    table.columns.add('email', sql.NVarChar(50), { nullable: false });
     table.columns.add('role', sql.NVarChar(10), { nullable: false });
     
     for (let index = 0; index < data.length; index++) {       
@@ -26,15 +26,16 @@ function createTableClients(data) {
     }
     
     const request = new sql.Request()
-    request.bulk(table)    
-         .then(result => { console.log(result), sql.close() })
-         .catch(err => { console.log(`Erro : ${err}`), sql.close() })
+    request.bulk(table)            
+           .then(result => { console.log(result), sql.close() })
+           .catch(err => { console.log(`Erro : ${err}`), sql.close() })
+
 }
 
 function insertClientsData(data) {
     sql.connect(connectionData)
-        .then(conn => createTableClients(data))
-        .catch(err => console.log(`Erro : ${err}`));
+       .then(conn => createTableClients(data))
+       .catch(err => console.log(`Erro : ${err}`));
 }
 
 module.exports = insertClientsData
