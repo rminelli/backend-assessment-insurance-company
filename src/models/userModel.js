@@ -1,8 +1,7 @@
-exports.userModel = function (req, res) {
-    const config = require('../config/config.js');
-    const jwt = require('jsonwebtoken');
-    const sql = require('mssql')
+const sql = require('mssql')
+const auth = require('../middleware/authentication.js')
 
+exports.userModel = function (req, res) {
     let connectionData = {
         user: 'sa',
         password: 'SQLExpress',
@@ -16,23 +15,23 @@ exports.userModel = function (req, res) {
     }
     let _userName = req.body.name
     let _userEmail = req.body.email
-   
-    sql.connect(connectionData).then(function (pool) {        
+
+    sql.connect(connectionData).then(function (pool) {
         console.log("==== DATABASE CONNECTED =====");
         let query = `select id from clients where name = '${_userName}' and email = '${_userEmail}'`
         return pool.request().query(query).then(function (result) {
             console.log("*** Data successfully returned *** ");
-            let _returnSql = result.recordset.length === 0 ?  false : result.recordset[0].id 
+            let _returnSql = result.recordset.length === 0 ? false : result.recordset[0].id
             if (!_returnSql) {
                 console.log("User does not exist")
                 sql.close();
-                res.status(500).send('User does not exist!')               
+                res.status(401).send('User does not exist!')
             } else {
                 // Create token 
-                console.log("Authenticated");
-                sql.close();
-               let token = jwt.sign({_returnSql}, config.myprivatekey, {expiresIn: 3000}) // expires in 50min)
-               res.status(200).send({ auth: true, token: token });                    
+                console.log("User exist!");
+                sql.close();                
+                let token = auth.getToken(_returnSql)
+                res.status(200).send({ auth: true, token: token });
             }
         }).catch(function (err) {
             console.log("SQL Error", err);

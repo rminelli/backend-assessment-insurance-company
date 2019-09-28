@@ -18,7 +18,7 @@ function createTableClients(data) {
     table.create = true;
     table.columns.add('id', sql.NVarChar(36), { nullable: false, primary: true });
     table.columns.add('name', sql.NVarChar(150), { nullable: false });
-    table.columns.add('email', sql.NVarChar(50), { nullable: false });
+    table.columns.add('email', sql.NVarChar(50), { nullable: false, primary: true });
     table.columns.add('role', sql.NVarChar(10), { nullable: false });
     
     for (let index = 0; index < data.length; index++) {       

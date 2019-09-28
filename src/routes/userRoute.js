@@ -1,16 +1,11 @@
-const auth = require("../middleware/auth");
-const { User, validate } = require("../models/userModel.js")
-const authLogin = require("../models/userModel.js")
+const authentication = require("../middleware/authentication");
+const getLoginData = require("../models/userModel.js")
+const getClientData = require('../models/clientsModel')
 const express = require("express");
 const router = express.Router();
 
-router.post('/',authLogin.userModel)
-
-// router.get("/current", auth, async (req, res) => {
-//   const user = await User.findById(req.user._id).select("-password");
-//   res.send(user);
-// });
-
-router.get("/current", auth)
+router.post('/',getLoginData.userModel)
+router.get('/clients', getClientData.getClient)
+//router.get('/policies', authentication.checkData)
 
 module.exports = router;
