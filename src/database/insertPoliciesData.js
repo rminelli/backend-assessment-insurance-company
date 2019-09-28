@@ -28,7 +28,7 @@ function createTablePolicies(data) {
         const request = new sql.Request()
         request.bulk(table)
              .then(result => request.query(constraintFk))
-             .then(result => {console.log('constraintFk'), sql.close()})
+             .then(result => {console.log('Success - Policies and KF constraint inserted in DB'), sql.close()})
              .catch(err => { console.log(`Erro : ${err}`), sql.close() })
 }
 
