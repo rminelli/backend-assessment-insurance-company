@@ -1,7 +1,6 @@
 # Backend application for Insurance Company (Assessment)
 ## An insurance company has requested the development of a server-side application that can manage some information about the company's insurance policies and customers.
 
-[![node version](https://img.shields.io/node/v/axios.svg?style=flat-square)](https://github.com/nodejs/node)
 [![prettier](https://img.shields.io/badge/styled%20with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![GitHub](https://img.shields.io/github/license/mtxr/vscode-sqltools?style=flat-square)](https://github.com/rminelli/backend-assessment-insurance-company/blob/master/LICENSE)
 
@@ -15,7 +14,7 @@ This project was created with:
 - Axios
 - Jest
 
-**The company provided two data sources, available on the services:**
+**The company provided two data sources, available on the services**
 * The list of company clients can be found at: http://www.mocky.io/v2/5808862710000087232b75ac
 * The list of company policies can be found at: http://www.mocky.io/v2/580891a4100000e8242b75c5
 
@@ -32,6 +31,7 @@ This project was created with:
 In order to install the edition of SQL Server 2017 Express, first you have to download the installer from the following [link](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads).
 
 **Turn on the SQL Server Browser**
+
 Go to start up menu or the search and look for SQL Server Configuration Manager and run it! 
 In the left Tab click on SQL Server Services now in the right tab double click on SQL Server Browser
 will open a window, you will see 3 tabs, go for the Service tab change start mode to Automatic and apply
@@ -43,6 +43,9 @@ Back to the right tab click on SQL Server Network Configuration then Client Prot
 ![](./docs/db.png)
 
 **Change the configuration file with the access credentials for the database and your preferred private key**
+```bash
+$ ./src/config.config.js
+```
 ```javascript
 module.exports = {
   myprivatekey: 'robertominelli@2019',
@@ -56,8 +59,6 @@ module.exports = {
 ```
 
 ### Step 2: Set up the Environment
-
-## How to Use
 ```bash
 # Clone this repository
 $ git clone https://github.com/rminelli/backend-assessment-insurance-company
