@@ -1,9 +1,12 @@
 const express = require('express')
 const usersRoute = require("./routes/userRoute.js");
-const app = express()
+//const app = express()
 const port = 3000
 const bodyParser = require('body-parser')
 const service_status = require('./status/status.js')
+
+const app = require('./app.js')
+
 
 // Default route status
 app.get('/', service_status.go)

@@ -7,7 +7,7 @@
     "start": "node ./src/index.js",
     "start-dev": "nodemon index.js",
     "migrate": "node ./src/database/initialSetup.js",
-    "test": "jest --detectOpenHandles"   
+    "test": "jest"   
   },
   "author": "Roberto de Figueiredo Minelli",
   "license": "MIT",

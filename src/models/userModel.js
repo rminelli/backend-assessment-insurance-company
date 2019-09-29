@@ -2,15 +2,16 @@ const sql = require('mssql')
 const auth = require('../middleware/authentication.js')
 
 exports.userModel = function (req, res) {
+    const { user, password, server, database, port, instanceName } = require('../config/config.js');
     let connectionData = {
-        user: 'sa',
-        password: 'SQLExpress',
-        server: 'localhost',
-        database: 'IC_Database',
-        port: 1433,
+        user: user,
+        password: password,
+        server: server,
+        database: database,
+        port: port,
         options: {
             encrypt: false,
-            instanceName: 'SQLEXPRESS'
+            instanceName: instanceName
         }
     }
     let _userName = req.body.name
