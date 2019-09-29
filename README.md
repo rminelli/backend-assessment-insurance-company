@@ -175,7 +175,9 @@ Click on **Header** and enter the parameters:
 
 - Key: **token**, 	Value: **Token provided**
 - Key: **name**, 	Value: **Client Email** 
+
 **or**
+
 - Key: **id**, 		Value: **Client Id**
 
 Click **Send** button
@@ -193,6 +195,44 @@ Will get **200 OK** and **data**
 }
 ```
 ![](./docs/getClients.png)
+
+***
+
+**Access api/clients/**
+
+Select **GET**
+
+Enter URL http://localhost:3000/api/policies
+
+Click on **Header** and enter the parameters: 
+
+- Key: **token**, 	Value: **Token provided**
+- Key: **name**, 	Value: **Client Email** 
+
+**or**
+
+- Key: **policieId**, 	Value: **Policie Id** 
+
+Click **Send** button
+
+Will get **200 OK** and **data**
+```json
+{
+    "msg": true,
+    "data": [
+        {
+            "clientName": "Britney",
+            "policieId": "0039b246-5ffa-4b90-b16f-fc9f2d4033d6",
+            "amountInsured": "879.83",
+            "policeEmail": "inesblankenship@quotezart.com",
+            "inceptionDate": "2014-06-29T03:41:22Z",
+            "installmentPayment": "false",
+            "policieClientId": "a0ece5db-cd14-4f21-812f-966633e7be86"
+        }
+    ]
+}   
+```
+![](./docs/getPolicies.png)
 
 
 ## License
