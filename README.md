@@ -1,5 +1,5 @@
 # Backend application for Insurance Company (Assessment)
-## An insurance company has requested the development of a server-side application that can manage some information about the company's insurance policies and customers.
+## An insurance company has requested the development of a server-side application that can manage some information about the company's insurance policies and customers
 
 [![prettier](https://img.shields.io/badge/styled%20with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![GitHub](https://img.shields.io/github/license/mtxr/vscode-sqltools?style=flat-square)](https://github.com/rminelli/backend-assessment-insurance-company/blob/master/LICENSE)
@@ -42,6 +42,7 @@ Back to the right tab click on SQL Server Network Configuration then Client Prot
 
 **Database diagram (Will be created after the environment setup is completed)**
 ![](./docs/db.png)
+***Foreign key constraint between Clients(id) and Policies(clientid)***
 
 ### Step 2: Set up the Environment
 ```bash
@@ -115,8 +116,7 @@ cache-control: no-cache
 name=Jacquelyn&email=jacquelynblankenship%40quotezart.com
 ```
 
-* For simulation purposes the token expiration time has been set to 300 seconds (5 minutes)
-You can change this in the function getToken
+* For simulation purposes the token expiration time has been set to 300 seconds (5 minutes), you can change this in the function getToken
 ```bash
 $ ./src/middleware/authentication.js
 ```
@@ -127,7 +127,7 @@ exports.getToken = function name(data) {
 }
 ```
 
-**Note:** Each token contains the user role according to the credentials provided by it, so if the user does not have the admin role he will not have access to **policies api**
+**Note:** Each token contains the user role data according to the credentials provided by it, so if the user does not have the admin role he will not have access to **policies api**
 
 ### Get user data filterd by user name -> Can be accessed by users with role "users" and "admin"
 
