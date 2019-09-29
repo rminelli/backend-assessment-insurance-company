@@ -43,22 +43,6 @@ Back to the right tab click on SQL Server Network Configuration then Client Prot
 **Database diagram (Will be created after the environment setup is completed)**
 ![](./docs/db.png)
 
-**Change the configuration file with the access credentials for the database and your preferred private key**
-```bash
-$ ./src/config/config.js
-```
-```javascript
-module.exports = {
-  myprivatekey: 'robertominelli@2019',
-  user: 'sa',
-  password: 'SQLExpress',
-  server: 'localhost',
-  database: 'IC_Database',
-  port: 1433,
-  instanceName: 'SQLEXPRESS'
-};
-```
-
 ### Step 2: Set up the Environment
 ```bash
 # Clone this repository
@@ -86,6 +70,21 @@ $ npm run start-dev
 $ npm test
 
 ```
+**Change the configuration file with the access credentials for the database and your preferred private key**
+```bash
+$ ./src/config/config.js
+```
+```javascript
+module.exports = {
+  myprivatekey: 'robertominelli@2019',
+  user: 'sa',
+  password: 'SQLExpress',
+  server: 'localhost',
+  database: 'IC_Database',
+  port: 1433,
+  instanceName: 'SQLEXPRESS'
+};
+```
 
 ## Web API REST
 **API Constraints:**
@@ -94,6 +93,7 @@ Get access token:
 
 * api/
 * Parameters required for authentication:
+
 **name**
 **email**
 
