@@ -93,6 +93,9 @@ $ npm test
 Get access token:
 
 * api/
+* Parameters required for authentication:
+**name**
+**email**
 
 The variable body (req.body) is sent to application / x-www-form-urlencoded, the body of the HTTP message sent to the server is essentially a query string, name / value is separated by ampersands (&), and names are separated from values using equal (=)
 
