@@ -126,8 +126,8 @@ exports.getToken = function name(data) {
   return token
 }
 ```
-<span style="color:red">Important :</span> 
-**Each token contains the user role according to the credentials provided by it, so if the user does not have the admin role he will not have access to policies api**
+
+**Note:** Each token contains the user role according to the credentials provided by it, so if the user does not have the admin role he will not have access to policies api
 
 ### Get user data filterd by user name -> Can be accessed by users with role "users" and "admin"
 
@@ -141,8 +141,61 @@ exports.getToken = function name(data) {
 
 ## Example using the Postman:
 
+**Getting access token**
+
+Select **POST** 
+
+Enter URL http://localhost:3000/api 
+
+Click on **Body** select **x-www-form-urlencodedc** option and enter 2 parameters: 
+
+- Key: **name**, 	Value: **{Client name}**
+- Key: **email**, 	Value: **{Client Email}**
+
+Click **Send** button
+
+Will get **200 OK** and **access token**
+```json
+{
+    "auth": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMDA1OWJhNDQtNzVkYy00ZjczLTlhOWYtMGUyMzc2OTA5ZTI4Iiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTU2OTc5MDA0MiwiZXhwIjoxNTY5NzkwMzQyfQ.swtv9dG6xr-KMwOWeSYlEvL4L_bVp3r0_YHNewJjeeM"
+}
+```
+![](./docs/getToken.png)
+
+**
+
+**Access api/clients/**
+
+Select **GET**
+
+Enter URL http://localhost:3000/api/clients
+
+Click on **Header** and enter the parameters: 
+
+- Key: **token**, 	Value: **{Token provided}**
+- Key: **name**, 	Value: **{Client Email}**
+- Key: **id**, 		Value: **{Client Id}**
+
+Click **Send** button
+
+Will get **200 OK** and **data**
+```json
+{
+    "msg": true,
+    "data": {
+        "id": "a0ece5db-cd14-4f21-812f-966633e7be86",
+        "name": "Britney",
+        "email": "britneyblankenship@quotezart.com",
+        "role": "admin"
+    }
+}
+```
+![](./docs/getClients.png)
 
 
+## License
+[MIT](https://github.com/rminelli/backend-assessment-insurance-company/blob/master/LICENSE)
 
 
 
