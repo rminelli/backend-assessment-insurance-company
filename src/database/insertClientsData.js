@@ -1,15 +1,14 @@
 const sql = require('mssql')
-const clientsUrl = "http://www.mocky.io/v2/5808862710000087232b75ac"
-
+const { user, password, server, database, port, instanceName } = require('../config/config.js');
 let connectionData = {
-    user: 'sa',
-    password: 'SQLExpress',
-    server: 'localhost',
-    database: 'IC_Database',
-    port: 1433,
+    user: user,
+    password: password,
+    server: server,
+    database: database,
+    port: port,
     options: {
         encrypt: false,
-        instanceName: 'SQLEXPRESS'
+        instanceName: instanceName
     }
 }
 function createTableClients(data) {

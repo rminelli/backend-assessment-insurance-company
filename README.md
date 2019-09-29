@@ -1,16 +1,26 @@
 # H1
-## H2
+Backend API REST for Insurance Company (Assessment)
 ### H3
-#### H4
-##### H5
-###### H6
+An insurance company has requested the development of an application that can manage some information about the company's insurance policies and customers.
+
+**The company provided two data sources, available on the services:**
+* The list of company clients can be found at: http://www.mocky.io/v2/5808862710000087232b75ac
+* The list of company policies can be found at: http://www.mocky.io/v2/580891a4100000e8242b75c5
+
+With that information, we need to create a Web API that exposes the following services with some added constraints:
+
+- Get user data filtered by user id -> Can be accessed by users with role "users" and "admin"
+- Get user data filtered by user name -> Can be accessed by users with role "users" and "admin"
+- Get the list of policies linked to a user name -> Can be accessed by users with role "admin"
+- Get the user linked to a policy number -> Can be accessed by users with role "admin"We have the following constraints:
+- REST API should be developed using some node framework (loopback or express)
+- Think about licenses of 3d party libraries (if needed)
+- Authentication and authorization. Take the user role from the web service that returns the list of company clients 
 
 
-Alt-H1
-======
 
-Alt-H2
-------
+
+
 
 
 You need to turn on the SQL Server Browser. Go to start up menu or the search and look for SQL Server Configuration Manager. Run it! (Im using Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 (X64)   Aug 22 2017 17:04:49   Copyright (C) 2017 Microsoft Corporation  Express Edition (64-bit) on Windows 10 Pro 10.0 <X64> (Build 18362: ) (Hypervisor))

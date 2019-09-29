@@ -1,25 +1,24 @@
+const { user, password, server, port, instanceName } = require('../config/config.js');
 const sql = require("mssql");
 let connectionData = {
-    user: 'sa',
-    password: 'SQLExpress',
-    server: 'localhost',
-    port: 1433,
+    user: user,
+    password: password,
+    server: server,
+    port: port,
     options: {
         encrypt: false,
-        instanceName: 'SQLEXPRESS'
+        instanceName: instanceName
     }
 }
-
- function ddlObject(databaseName) {    
+function ddlObject(databaseName) {
     sql.query(`USE master IF DB_ID ('${databaseName}') IS NOT NULL DROP DATABASE ${databaseName} CREATE DATABASE ${databaseName}`)
         .then(conn => { console.log(`${databaseName} created!`), sql.close() })
-        .catch(err => { console.log(`Erro : ${err}`), sql.close() })        
+        .catch(err => { console.log(`Erro : ${err}`), sql.close() })
 }
-
- function createDatabaseName(databaseName) {
+function createDatabaseName(databaseName) {
     sql.connect(connectionData)
         .then(conn => ddlObject(databaseName))
-        .catch(err => console.log(`Erro : ${err}`))        
+        .catch(err => console.log(`Erro : ${err}`))
 }
 
 module.exports = createDatabaseName

@@ -2,8 +2,7 @@ const getData = require('./getData')
 const createDatabase = require('./createDatabase')
 const insertClientsData = require('./insertClientsData')
 const insertPoliciesData = require('./insertPoliciesData')
-
-const databaseName = 'IC_Database'
+const { database } = require('../config/config.js');
 const clientsUrl = "http://www.mocky.io/v2/5808862710000087232b75ac"
 const policiesUrl = "http://www.mocky.io/v2/580891a4100000e8242b75c5"
 
@@ -14,7 +13,7 @@ getData(clientsUrl)
      .catch(err => console.log(`Erro : ${err}`))
 }
 
-createDatabase(databaseName)
+createDatabase(database)
 setTimeout(function(){ insertData(); }, 4000);
 
 

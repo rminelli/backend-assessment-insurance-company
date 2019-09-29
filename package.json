@@ -4,9 +4,10 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "start": "nodemon",
-    "test": "nps test",
-    "build": "node ./src/database/initialSetup.js"
+    "start": "node ./src/index.js",
+    "start-dev": "nodemon index.js",
+    "migrate": "node ./src/database/initialSetup.js",
+    "test": "jest --detectOpenHandles"   
   },
   "author": "Roberto de Figueiredo Minelli",
   "license": "MIT",
@@ -16,5 +17,17 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mssql": "^5.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.0",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.2",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
