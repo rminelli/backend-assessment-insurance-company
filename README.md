@@ -149,8 +149,8 @@ Enter URL http://localhost:3000/api
 
 Click on **Body** select **x-www-form-urlencodedc** option and enter 2 parameters: 
 
-- Key: **name**, 	Value: **{Client name}**
-- Key: **email**, 	Value: **{Client Email}**
+- Key: **name**, 	Value: **Client name**
+- Key: **email**, 	Value: **Client Email**
 
 Click **Send** button
 
@@ -163,7 +163,7 @@ Will get **200 OK** and **access token**
 ```
 ![](./docs/getToken.png)
 
-**
+***
 
 **Access api/clients/**
 
@@ -173,9 +173,9 @@ Enter URL http://localhost:3000/api/clients
 
 Click on **Header** and enter the parameters: 
 
-- Key: **token**, 	Value: **{Token provided}**
-- Key: **name**, 	Value: **{Client Email}**
-- Key: **id**, 		Value: **{Client Id}**
+- Key: **token**, 	Value: **Token provided**
+- Key: **name**, 	Value: **Client Email**
+- Key: **id**, 		Value: **Client Id**
 
 Click **Send** button
 
