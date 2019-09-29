@@ -1,7 +1,7 @@
 # H1
 Backend API REST for Insurance Company (Assessment)
 ### H3
-An insurance company has requested the development of an application that can manage some information about the company's insurance policies and customers.
+An insurance company has requested the development of a server-side application that can manage some information about the company's insurance policies and customers.
 
 **The company provided two data sources, available on the services:**
 * The list of company clients can be found at: http://www.mocky.io/v2/5808862710000087232b75ac
@@ -38,3 +38,45 @@ change TCP/IP to enable
 Let me know if it works.
 
 for simulation purposes the token expiration time has been set to 300 seconds (5minutes)
+
+
+####Javascript　
+
+```javascript
+function test(){
+	console.log("Hello world!");
+}
+ 
+(function(){
+    var box = function(){
+        return box.fn.init();
+    };
+
+    box.prototype = box.fn = {
+        init : function(){
+            console.log('box.init()');
+
+			return this;
+        },
+
+		add : function(str){
+			alert("add", str);
+
+			return this;
+		},
+
+		remove : function(str){
+			alert("remove", str);
+
+			return this;
+		}
+    };
+    
+    box.fn.init.prototype = box.fn;
+    
+    window.box =box;
+})();
+
+var testBox = box();
+testBox.add("jQuery").remove("jQuery");
+```
