@@ -94,8 +94,10 @@ Get access token:
 
 * api/
 
-The variable body (req.body) is sent for application / x-www-form-urlencoded, the body of the HTTP message sent to the server is essentially a query string, name / value is separated by ampersands (&), and names are separated from values using equal (=) . 
+The variable body (req.body) is sent to application / x-www-form-urlencoded, the body of the HTTP message sent to the server is essentially a query string, name / value is separated by ampersands (&), and names are separated from values using equal (=)
+
 An example of this would be:
+
 name=Jacquelyn&email=jacquelynblankenship%40quotezart.com
 ```bash
 POST /api/ HTTP/1.1
@@ -113,6 +115,19 @@ cache-control: no-cache
 name=Jacquelyn&email=jacquelynblankenship%40quotezart.com
 ```
 
+* For simulation purposes the token expiration time has been set to 300 seconds (5minutes)
+You can change this in the function getToken
+```bash
+$ ./src/middleware/authentication.js
+```
+```javascript
+exports.getToken = function name(data) {
+  let token = jwt.sign({ data }, config.myprivatekey, { expiresIn: 300 })
+  return token
+}
+```
+
+
 Get user data filterd by user name -> Can be accessed by users with role "users" and "admin"
 
 * api/clients/
@@ -128,7 +143,7 @@ Get the user linked to a policy number -> Can be accessed by users with role "ad
 
 
 
-for simulation purposes the token expiration time has been set to 300 seconds (5minutes)
+
 
 
 
