@@ -42,6 +42,7 @@ Back to the right tab click on SQL Server Network Configuration then Client Prot
 
 **Database diagram (Will be created after the environment setup is completed)**
 ![](./docs/db.png)
+
 ***Foreign key constraint between Clients(id) and Policies(clientid)***
 
 ### Step 2: Set up the Environment
