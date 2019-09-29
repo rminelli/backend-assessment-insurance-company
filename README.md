@@ -139,7 +139,7 @@ exports.getToken = function name(data) {
 * api/policies/
 * Parameters required for authentication: **token** and **name** or **policy number**
 
-## Example using the Postman:
+## Example using Postman:
 
 **Getting access token**
 
@@ -174,7 +174,8 @@ Enter URL http://localhost:3000/api/clients
 Click on **Header** and enter the parameters: 
 
 - Key: **token**, 	Value: **Token provided**
-- Key: **name**, 	Value: **Client Email**
+- Key: **name**, 	Value: **Client Email** 
+**or**
 - Key: **id**, 		Value: **Client Id**
 
 Click **Send** button
