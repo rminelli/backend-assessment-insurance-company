@@ -89,13 +89,10 @@ module.exports = {
 ## Web API REST
 **API Constraints:**
 
-Get access token:
+### Get access token:
 
 * api/
-* Parameters required for authentication:
-
-**name**
-**email**
+* Parameters required for authentication: **name** and **email**
 
 The variable body (req.body) is sent to application / x-www-form-urlencoded, the body of the HTTP message sent to the server is essentially a query string, name / value is separated by ampersands (&), and names are separated from values using equal (=)
 
@@ -129,15 +126,19 @@ exports.getToken = function name(data) {
   return token
 }
 ```
+**Each token contains the user role according to the credentials provided by it, so if the user does not have the admin role he will not have access to policies api**
 
-
-Get user data filterd by user name -> Can be accessed by users with role "users" and "admin"
+### Get user data filterd by user name -> Can be accessed by users with role "users" and "admin"
 
 * api/clients/
+* Parameters required for authentication: **token** and **id** or **name**
 
-Get the user linked to a policy number -> Can be accessed by users with role "admin"
+### Get the user linked to a policy number -> Can be accessed by users with role "admin"
 
 * api/policies/
+* Parameters required for authentication: **token** and **name** or **policy number**
+
+## Example using the Postman:
 
 
 
