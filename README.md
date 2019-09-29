@@ -115,29 +115,29 @@ cache-control: no-cache
 name=Jacquelyn&email=jacquelynblankenship%40quotezart.com
 ```
 
-* For simulation purposes the token expiration time has been set to 300 seconds (5minutes)
+* For simulation purposes the token expiration time has been set to 300 seconds (5 minutes)
 You can change this in the function getToken
 ```bash
 $ ./src/middleware/authentication.js
 ```
 ```javascript
 exports.getToken = function name(data) {
-  let token = jwt.sign({ data }, config.myprivatekey, { expiresIn: 300 })
+  let token = jwt.sign({ data }, config.myprivatekey, { expiresIn: 300 }) // expiration time
   return token
 }
 ```
 
-**Note:** Each token contains the user role according to the credentials provided by it, so if the user does not have the admin role he will not have access to policies api
+**Note:** Each token contains the user role according to the credentials provided by it, so if the user does not have the admin role he will not have access to **policies api**
 
 ### Get user data filterd by user name -> Can be accessed by users with role "users" and "admin"
 
 * api/clients/
-* Parameters required for authentication: **token** and **id** or **name**
+* Parameters required for fetch data: **token** and **id** or **name**
 
 ### Get the user linked to a policy number -> Can be accessed by users with role "admin"
 
 * api/policies/
-* Parameters required for authentication: **token** and **name** or **policy number**
+* Parameters required for fetch data: **token** and **name** or **policy number**
 
 ## Example using Postman:
 
@@ -172,13 +172,12 @@ Select **GET**
 Enter URL http://localhost:3000/api/clients
 
 Click on **Header** and enter the parameters: 
+Note: Parameters required for fetch data: **token** and **name** or **policy number**
 
 - Key: **token**, 	Value: **Token provided**
 - Key: **name**, 	Value: **Client Email** 
-
-**or**
-
 - Key: **id**, 		Value: **Client Id**
+
 
 Click **Send** button
 
@@ -205,12 +204,10 @@ Select **GET**
 Enter URL http://localhost:3000/api/policies
 
 Click on **Header** and enter the parameters: 
+Note: Parameters required for fetch data: **token** and **name** or **policieId**
 
 - Key: **token**, 	Value: **Token provided**
 - Key: **name**, 	Value: **Client Email** 
-
-**or**
-
 - Key: **policieId**, 	Value: **Policie Id** 
 
 Click **Send** button
