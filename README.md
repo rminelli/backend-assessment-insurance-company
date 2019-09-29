@@ -126,6 +126,7 @@ exports.getToken = function name(data) {
   return token
 }
 ```
+<span style="color:red">Important :</span> 
 **Each token contains the user role according to the credentials provided by it, so if the user does not have the admin role he will not have access to policies api**
 
 ### Get user data filterd by user name -> Can be accessed by users with role "users" and "admin"
