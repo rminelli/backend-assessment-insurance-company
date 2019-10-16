@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "production" : "pm2 start ./src/index.js --name backend-app",
+    "production" : "pm2 start ./src/index.js --watch --name backend-app",
     "start": "node ./src/index.js",
     "start-dev": "nodemon index.js",
     "migrate": "node ./src/database/initialSetup.js",
