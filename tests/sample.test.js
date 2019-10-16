@@ -11,12 +11,12 @@ describe('Test the root path', () => {
 });
 
 describe('Test the API path', () => {
-  test('It should response the POST method', (done) => {
-      request(app).post('/api/').then((response) => {
-          expect(response.statusCode).toBe(404);
-          done();
-      });
-  });
+    test('It should response the POST method', (done) => {
+        request(app).post('/api/').then((response) => {
+            expect(response.statusCode).toBe(404);
+            done();
+        });
+    });
 });
 
 
