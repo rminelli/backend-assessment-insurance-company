@@ -65,6 +65,9 @@ $ npm start
 # Run the app with nodemon
 $ npm run start-dev
 
+# Run in production with pm2
+$ npm run production
+
 # The api is running at http://127.0.0.1:3000/api/
 # Use Postman a client REST to test the API. 
 
