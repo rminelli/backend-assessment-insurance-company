@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
+const service_status = require('./status/status.js')
 
-app.get('/', (req, res) => res.status(200).json({ message: 'Project started' }));
+app.get('/', service_status.go);
 
 module.exports = app;
