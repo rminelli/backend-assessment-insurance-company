@@ -175,7 +175,7 @@ Select **GET**
 
 Enter URL http://localhost:3000/api/clients
 
-Click on **Header** and enter the parameters: 
+Click on **Headers** and enter the parameters: 
 
 Note: Parameters required for fetch data: **token** and (**name** or **policy number**)
 
@@ -208,7 +208,7 @@ Select **GET**
 
 Enter URL http://localhost:3000/api/policies
 
-Click on **Header** and enter the parameters: 
+Click on **Headers** and enter the parameters: 
 
 Note: Parameters required for fetch data: **token** and (**name** or **policieId**)
 
