@@ -75,9 +75,9 @@ $ npm run production
 $ npm test
 
 ```
-**Change the configuration file with the access credentials for the database and your preferred private key**
+**Change the environment configuration file with the access credentials for the database and your preferred private key*
 ```bash
-$ ./src/config/config.js
+$ .env
 ```
 ```javascript
 module.exports = {

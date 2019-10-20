@@ -2,7 +2,7 @@ const sql = require('mssql')
 const auth = require('../middleware/authentication.js')
 
 exports.userModel = function (req, res) {
-    const { user, password, server, database, port, instanceName } = require('../config/config.js');
+    const { user, password, server, database, port, instanceName } = require('../../.env);
     let connectionData = {
         user: user,
         password: password,

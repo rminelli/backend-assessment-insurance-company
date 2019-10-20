@@ -1,4 +1,4 @@
-const { user, password, server, port, instanceName } = require('../config/config.js');
+const { user, password, server, port, instanceName } = require('../../.env');
 const sql = require("mssql");
 let connectionData = {
     user: user,
