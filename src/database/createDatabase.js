@@ -10,15 +10,19 @@ let connectionData = {
         instanceName: instanceName
     }
 }
-function ddlObject(databaseName) {
-    sql.query(`USE master IF DB_ID ('${databaseName}') IS NOT NULL DROP DATABASE ${databaseName} CREATE DATABASE ${databaseName}`)
-        .then(conn => { console.log(`${databaseName} created!`), sql.close() })
-        .catch(err => { console.log(`Erro : ${err}`), sql.close() })
-}
-function createDatabaseName(databaseName) {
-    sql.connect(connectionData)
-        .then(conn => ddlObject(databaseName))
-        .catch(err => console.log(`Erro : ${err}`))
+
+const createDB = async (databaseName) => {
+    try {
+        await sql.connect(connectionData)
+        const result = await sql.query(`USE master IF DB_ID ('${databaseName}') IS NOT NULL DROP DATABASE ${databaseName} CREATE DATABASE ${databaseName}`)
+        await sql.close()
+        console.log(`${databaseName} created!`)
+        return result
+    } catch (err) {
+        sql.close()
+        console.log(err)
+    }
 }
 
-module.exports = createDatabaseName
+
+module.exports = createDB
