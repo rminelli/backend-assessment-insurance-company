@@ -1,6 +1,6 @@
 const axios = require('axios')
-const getData = function (url) {
-  return axios.get(url)
+const getData = async function (url) {
+  return await axios.get(url)
 }
 
 module.exports = getData
